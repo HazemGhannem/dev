@@ -10,6 +10,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
+use Mediumart\Orange\SMS\SMS;
+use Mediumart\Orange\SMS\Http\SMSClient;
+
+
 class EmailVerifier
 {
     private $verifyEmailHelper;
@@ -31,13 +35,22 @@ class EmailVerifier
             $user->getEmail(),
             ['id' => $user->getId()]
         );
-
+        
         $context = $email->getContext();
         $context['signedUrl'] = $signatureComponents->getSignedUrl();
         $context['expiresAtMessageKey'] = $signatureComponents->getExpirationMessageKey();
         $context['expiresAtMessageData'] = $signatureComponents->getExpirationMessageData();
+        
 
+        $client = SMSClient::getInstance('2Yf3CBy0mWhiS0TcVCWonAOkEUXs6cLF', 'Bgflgfsi6lEN1e2V');
+        $sms = new SMS($client);
+        $sms->message( "Welcome to FlyFood check your email or Click on the link to verify your Account: " . strval($context['signedUrl'] = $signatureComponents->getSignedUrl()))
+            ->from('+21627300520')
+            ->to('+21625700763')
+            ->send();
         $email->context($context);
+
+        
 
         $this->mailer->send($email);
     }

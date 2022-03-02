@@ -20,6 +20,8 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 use Gregwar\CaptchaBundle\Type\CaptchaType;
 
+
+
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void

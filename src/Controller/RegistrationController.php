@@ -16,6 +16,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
+use Mediumart\Orange\SMS\SMS;
+use Mediumart\Orange\SMS\Http\SMSClient;
+
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
@@ -51,7 +54,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
+           
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
@@ -82,10 +85,12 @@ class RegistrationController extends AbstractController
         }
 
         $user = $userRepository->find($id);
+      
 
         if (null === $user) {
             return $this->redirectToRoute('app_register');
         }
+       
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
@@ -100,5 +105,36 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Your email address has been verified.'); #msg of verification 
 
         return $this->redirectToRoute('app_login');#redirect to login
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      /**
+     * @Route("/sms", name="sms")
+     */
+    public function index(): Response
+    {
+        $client = SMSClient::getInstance('2Yf3CBy0mWhiS0TcVCWonAOkEUXs6cLF', 'Bgflgfsi6lEN1e2V');
+        $sms = new SMS($client);
+        $sms->message()
+            ->from('+21627300520')
+            ->to('+21654302753')
+            ->send();
+        return $this->render('sms.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
     }
 }
