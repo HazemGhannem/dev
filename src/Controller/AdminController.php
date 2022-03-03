@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use AppBundle\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,17 +23,7 @@ class AdminController extends AbstractController
     {
         
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
-        if ($request->isMethod("POST"))
-        {
-           if( $username=empty($request->get('username'))){
-           
-            $users = $this->getDoctrine()->getRepository(User::class)->findAll();
-
-            }elseif($username=$request->get('username')){
-                $users = $this->getDoctrine()->getRepository(User::class)->findBy(array('username'=>$username));
-             
-            }
-        }
+        
         
         
         return $this->render('admin/index.html.twig', [
@@ -112,13 +104,51 @@ class AdminController extends AbstractController
     */
     public function adminn()
     {
-      
-
-
         return $this->render('backtemplate/billing.html.twig', [
             'users' => $users
         ]);
     }
+    /**
+     * @Route("/admin/{id}", name="user_show", methods={"GET"} , requirements={"id":"\d+"})
+     */
+    public function show(User $users): Response
+    {
+        return $this->render('admin/show.html.twig', [
+            'users' => $users,
+        ]);
+    }
    
+
+    /**
+   * Creates a new ActionItem entity.
+   *
+   * @Route("/search", name="ajax_search")
+   * @Method("GET")
+   */
+  public function searchAction(Request $request)
+  {
+      $em = $this->getDoctrine()->getManager();
+
+      $requestString = $request->get('q');
+
+      $User =  $em->getRepository(User::class)->findEntitiesByString($requestString);
+
+      if(!$User) {
+          $result['User']['error'] = "Not Found";
+      } else {
+          $result['User'] = $this->getRealEntities($User);
+      }
+
+      return new Response(json_encode($result));
+  }
+
+  public function getRealEntities($User){
+
+      foreach ($User as $User){
+          $realEntities[$User->getId()] = [$User->getUsername(),$User->getImage()];
+      }
+
+      return $realEntities;
+  }
    
 }

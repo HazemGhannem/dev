@@ -107,34 +107,4 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_login');#redirect to login
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      /**
-     * @Route("/sms", name="sms")
-     */
-    public function index(): Response
-    {
-        $client = SMSClient::getInstance('2Yf3CBy0mWhiS0TcVCWonAOkEUXs6cLF', 'Bgflgfsi6lEN1e2V');
-        $sms = new SMS($client);
-        $sms->message()
-            ->from('+21627300520')
-            ->to('+21654302753')
-            ->send();
-        return $this->render('sms.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
 }

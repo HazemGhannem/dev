@@ -6,18 +6,18 @@
 {% block head %}
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="backPublic/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="backPublic/assets/img/logo.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../backPublic/assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../backPublic/assets/img/logo.png">
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="backPublic/assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="backPublic/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="../backPublic/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../backPublic/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="backPublic/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="../backPublic/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="backPublic/assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+  <link id="pagestyle" href="../backPublic/assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="#" target="_blank">
-        <img src="backPublic/assets/img/logo.png" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="../backPublic/assets/img/logo.png" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">FLYFOOD</span>
       </a>
     </div>
@@ -127,18 +127,21 @@
     <form Method="POST">
 
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
-      <div class="container-fluid py-1 px-3">
+      
+        <div class="container-fluid py-1 px-3">
        
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+         <div class="sidebar-search">
+      <div class="input-group custom-search-form">
+          <input type="text" id="search" class="form-control" placeholder="Search">
+      </div>
+      
         
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here..." name="username">
-            </div>
-          </div>
-          
-          <ul class="navbar-nav  justify-content-end">
+           
+      <!-- /input-group -->
+  </div>
+  
 
 
             <li class="nav-item px-3 d-flex align-items-center">
@@ -153,7 +156,7 @@
                     <div class="d-flex py-1">
                               
                       <div class="my-auto">
-                        <img src="backPublic/assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                        <img src="../backPublic/assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -171,7 +174,7 @@
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="backPublic/assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                        <img src="../backPublic/assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -223,6 +226,9 @@
 
 {% endblock %}
 {% block body %}
+
+
+
 {% endblock %}
 {% block mid %}
   </div>
@@ -256,16 +262,18 @@
       </footer>
     </div>
   </main>
+  
+  
 {% endblock %}
 
 {% block nav %}
 {% endblock %}
 {% block js %}
 <!--   Core JS Files   -->
-  <script src="backPublic/assets/js/core/popper.min.js"></script>
-  <script src="backPublic/assets/js/core/bootstrap.min.js"></script>
-  <script src="backPublic/assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="backPublic/assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="../backPublic/assets/js/core/popper.min.js"></script>
+  <script src="../backPublic/assets/js/core/bootstrap.min.js"></script>
+  <script src="../backPublic/assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../backPublic/assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -283,7 +291,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="backPublic/assets/js/soft-ui-dashboard.min.js?v=1.0.3"></>
+  <script src="../backPublic/assets/js/soft-ui-dashboard.min.js?v=1.0.3"></>
   <script>
       $(document).ready(function() {
         // Hide menu once we know its width
@@ -296,6 +304,48 @@
         });
     });
     </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        var searchRequest = null;
+        $("#search").keyup(function() {
+            var minlength = 1;
+            var that = this;
+            var value = $(this).val();
+            var entitySelector = $("#entitiesNav").html('');
+            if (value.length >= minlength ) {
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "GET",
+                    url: "{{ path('ajax_search') }}",
+                    data: {
+                        'q' : value
+                    },
+                    dataType: "text",
+                    success: function(msg){
+                        //we need to check if the value is the same
+                        if (value===$(that).val()) {
+                            var result = JSON.parse(msg);
+                            $.each(result, function(key, arr) {
+                                $.each(arr, function(id, value) {
+                                    if (key === 'User') {
+                                        if (id !== 'error') {
+                                          console.log(value[0])
+                                            entitySelector.append('<li><b>' + value[0] + '</b><a href="/admin/' + id + '">' + '<img src="/upload/profile/' + value[1] + '" style="width: 50px; height: 50px"/>' + '</a></li>');
+                                          } else {
+                                            entitySelector.append('<li class="errorLi">' + value + '</li>');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                     }
+                });
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

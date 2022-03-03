@@ -1,9 +1,4 @@
 {% extends 'admin/base.html.twig'%}
-
-{% block title %}<title>AdminPanel</title>{% endblock %}
-
-
-
 {% block body %}
 <ul class="nav" id="side-menu">
       <li>
@@ -39,12 +34,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {% for item in users %}
+                        
                         <tr>
 
                         <td >
 
-                                <h6 class="text-xs text-secondary mb-0" style="margin-left: 20px;">{{item.id}}</h6>
+                                <h6 class="text-xs text-secondary mb-0" style="margin-left: 20px;">{{users.id}}</h6>
 
                         </td>
                           <td>
@@ -53,13 +48,13 @@
                                 {# <img src="backPublic/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> #}
                               </div>
                               <div class="d-flex flex-column justify-content-center">
-                                <p class="mb-0 text-sm">{{item.username}}</p>
-                                <h6 class="text-xs text-secondary mb-0">{{item.email}}</h6>
+                                <p class="mb-0 text-sm">{{users.username}}</p>
+                                <h6 class="text-xs text-secondary mb-0">{{users.email}}</h6>
                               </div>
                             </div>
                           </td>
                           <td>
-                          {% if item.isExpired == 1 %}
+                          {% if users.isExpired == 1 %}
                             <p class="text-xs font-weight-bold mb-0" style="margin-left: 20px;">blocked</p>
                             {% else %}
 
@@ -67,10 +62,10 @@
                             {% endif %}
                           </td>
                           <td class="align-middle text-center text-sm " >
-                          <img src ="{{asset('upload/profile/') ~ item.Image}}" width="50" height="50" style="margin-left: -55px;">
+                          <img src ="{{asset('upload/profile/') ~ users.Image}}" width="50" height="50" style="margin-left: -55px;">
                           </td>
                           <td class="align-middle text-center text-sm">
-                          {% if item.isVerified == 1 %}
+                          {% if users.isVerified == 1 %}
                           <span class="badge badge-sm bg-gradient-success">Account Verfied</span>
                           {% else %}
                           <span class="badge badge-sm bg-gradient-success">Account Not Verfied</span>
@@ -79,14 +74,14 @@
                           </td>
 
                             <td class="align-middle text-center">
-                            {% if item.roles[0] != "ROLE_ADMIN" %}
-                              <button class="btn btn-outline-warning mt-3 text-secondary text-xs font-weight-bold"><a href="{{ path('BLOCK_USER',{'id':item.id})  }}"> Block </a> </button>
+                            {% if users.roles[0] != "ROLE_ADMIN" %}
+                              <button class="btn btn-outline-warning mt-3 text-secondary text-xs font-weight-bold"><a href="{{ path('BLOCK_USER',{'id':users.id})  }}"> Block </a> </button>
                             </td>
                              {% endif %}
                             <td class="align-middle text-center">
-                            {% if item.roles[0] != "ROLE_ADMIN" %}
+                            {% if users.roles[0] != "ROLE_ADMIN" %}
                               <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                              <button class=" btn btn-outline-danger  mt-3 text-xs font-weight-bold"><a href="{{ path('DELETE_USER',{'id':item.id})  }}"> Delete </a> </button>
+                              <button class=" btn btn-outline-danger  mt-3 text-xs font-weight-bold"><a href="{{ path('DELETE_USER',{'id':users.id})  }}"> Delete </a> </button>
                               </a>
                             </td>
                             {% endif %}
@@ -94,7 +89,7 @@
 
 
                         </tr>
-                        {% endfor %}
+                       
 
                     </tbody>
                   </table>
@@ -162,3 +157,8 @@
         </div>
         
   {% endblock %}
+
+
+  
+
+
