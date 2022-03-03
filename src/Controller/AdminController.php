@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Knp\Component\Pager\PaginatorInterface;
 
 class AdminController extends AbstractController
 {
@@ -19,11 +20,15 @@ class AdminController extends AbstractController
     * 
     * @Route("/admin", name="admin_list")
     */
-    public function admin(Request $request)
+    public function admin(Request $request ,PaginatorInterface $paginator)
     {
         
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
-        
+        $users = $paginator->paginate(
+            $users, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            10 /*limit per page*/
+        );
         
         
         return $this->render('admin/index.html.twig', [
